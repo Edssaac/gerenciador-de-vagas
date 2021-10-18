@@ -127,7 +127,9 @@
     </section>
 
     <section>
-        <?=$paginacao?> <!-- CRIANDO A PAGINAÇÃO DE FORMA DINÂMICA -->
+        <div class="mb-3">
+            <?=$paginacao?> <!-- CRIANDO A PAGINAÇÃO DE FORMA DINÂMICA -->
+        </div>
     </section>
 
 </main>
