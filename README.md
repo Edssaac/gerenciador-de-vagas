@@ -11,7 +11,7 @@
 
 Este projeto tem como objetivo o desenvolvimento de um sistema [CRUD](https://developer.mozilla.org/pt-BR/docs/Glossary/CRUD) em PHP e MySQL para o gerenciamento da base de dados. <br> O cenário escolhido para a implementação deste projeto foi um site de gerenciamento de vagas.
    
-![](https://raw.githubusercontent.com/Edssaac/PHP-CRUD/main/classfatec.png)
+![](https://raw.githubusercontent.com/Edssaac/PHP-CRUD/main/suporte/classfatec.png)
 
    
 ### &bull; Tecnologias:
