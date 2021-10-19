@@ -81,12 +81,12 @@
             
             <div class="row my-4 align-items-end">
 
-                <div class="col">
+                <div class="col busca">
                     <label>Buscar por vaga:</label>
                     <input type="text" name="busca" class="form-control" value="<?=$busca?>">
                 </div>
 
-                <div class="col">
+                <div class="col status">
                     <label>Status</label>
                     <select name="filtroStatus" class="form-control">
                         <option value="">Ativa/Inativa</option>
@@ -95,7 +95,7 @@
                     </select>
                 </div>
 
-                <div class="col d-flex align-items-end">
+                <div class="col buttons d-flex align-items-end">
                     <button type="submit" class="btn btn-primary">Filtrar</button>
                     <button class="btn btn-danger mx-4"><a href="index.php" class="text-decoration-none text-light">Limpar</a></button>
                 </div>
