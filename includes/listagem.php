@@ -33,7 +33,7 @@
                             <td>'.$desc.'</td>
                             <td>'.(($vaga->ativo=='s') ? 'Ativo':'Inativo').'</td>
                             <td>'.(date('d/m/Y á\s H:i:s', strtotime($vaga->data))).'</td>
-                            <td>
+                            <td class="btns">
                                 <a href="editar.php?id='.$vaga->id.'"><button type="button" class="btn btn-primary">Editar</button></a>
                                 <a href="excluir.php?id='.$vaga->id.'"><button type="button" class="btn btn-danger">Excluir</button></a>
                             </td>
@@ -79,7 +79,7 @@
 
         <form method="get">
             
-            <div class="row my-4">
+            <div class="row my-4 align-items-end">
 
                 <div class="col">
                     <label>Buscar por vaga:</label>
