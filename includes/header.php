@@ -8,6 +8,9 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
+    <!-- Breakpoints Implementation -->
+    <link rel="stylesheet" href="./suporte/breakpoints.css">
+
     <!-- PAGE ICON -->
     <link rel="shortcut icon" href="https://img.icons8.com/plasticine/100/000000/find-matching-job.png">
 

@@ -6,7 +6,7 @@
     require __DIR__.'/vendor/autoload.php';
     // PARA PODER USAR A CLASSE VAGA:
     use \App\Entity\Vaga;
-
+    
 
     // FAZENDO A VALIDAÇÃO DO ID:
     if ( !isset($_GET['id']) || !is_numeric($_GET['id']) )
