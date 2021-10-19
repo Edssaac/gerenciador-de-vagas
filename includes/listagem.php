@@ -25,10 +25,12 @@
     $resultados = ''; /* VARIÁVEL QUE ARMAZENARA TODAS AS VAGAS DENTRO DE NOSSO ARRAY */
     foreach ( $vagas as $vaga ) /* CRIANDO UMA LINHA NA TABELA PARA CADA VAGA DISPONÍVEL */
     {
+        $desc = ( strlen($vaga->descricao)>20 ) ? substr( $vaga->descricao, 0, 11 )."..." : $vaga->descricao;
+
         $resultados .= '<tr>
                             <td>'.$vaga->id.'</td>
                             <td><a href="visualizar.php?id='.$vaga->id.'" class="text-decoration-none">'.$vaga->titulo.'</td>
-                            <td class="text-justify">'.$vaga->descricao.'</td>
+                            <td>'.$desc.'</td>
                             <td>'.(($vaga->ativo=='s') ? 'Ativo':'Inativo').'</td>
                             <td>'.(date('d/m/Y á\s H:i:s', strtotime($vaga->data))).'</td>
                             <td>
