@@ -82,7 +82,7 @@
             <div class="row my-4 align-items-end">
 
                 <div class="col busca">
-                    <label>Buscar por vaga:</label>
+                    <label>Buscar por título de vaga</label>
                     <input type="text" name="busca" class="form-control" value="<?=$busca?>">
                 </div>
 

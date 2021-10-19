@@ -1,14 +1,40 @@
 
+/* Extra small devices support */
+@media (max-width: 280.98px) { 
+
+    /* Header Title: */
+    div.container div.jumbotron h1
+    {
+        font-size: 2rem;
+    }
+
+    div.container div.jumbotron p
+    {
+        font-size: 0.9rem;
+    }
+
+}
+
 
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 399.98px) { 
 
     /* Filtros: */
-    div.row div.col 
+    div.row div.col.busca input
     {
-        display: none;
+        width: 290px;
+    }
+
+    div.row div.col.status select
+    {
+        width: 200px;
     }
     
+    div.row div.col.status 
+    {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
 
 }
 
@@ -28,17 +54,17 @@
     }
 
     /* Filtros: */
-    div.row div.col select
+    div.row div.col.status select
     {
         width: 140px;
     }
 
-    div.row div.col input
+    div.row div.col.busca input
     {
         width: 200px;
     }
 
-    div.row div.col.d-flex
+    div.row div.col.buttons
     {
         margin-top: 10px;
     }
