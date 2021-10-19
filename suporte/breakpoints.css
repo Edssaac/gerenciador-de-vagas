@@ -1,0 +1,58 @@
+
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 399.98px) { 
+
+    /* Filtros: */
+    div.row div.col 
+    {
+        display: none;
+    }
+    
+
+}
+
+
+/* Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) { 
+
+    /* Tabela: */
+    tr td.btns
+    {
+        text-align: center;
+    }
+
+    tr td a button.btn-primary
+    {
+        margin-bottom: 10px;
+    }
+
+    /* Filtros: */
+    div.row div.col select
+    {
+        width: 140px;
+    }
+
+    div.row div.col input
+    {
+        width: 200px;
+    }
+
+    div.row div.col.d-flex
+    {
+        margin-top: 10px;
+    }
+
+}
+
+
+/* Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) { 
+
+}
+
+
+/* Large devices (desktops, less than 1200px) */
+@media (max-width: 1199.98px) { 
+
+}
