@@ -27,8 +27,8 @@
     {
         $resultados .= '<tr>
                             <td>'.$vaga->id.'</td>
-                            <td>'.$vaga->titulo.'</td>
-                            <td>'.$vaga->descricao.'</td>
+                            <td><a href="visualizar.php?id='.$vaga->id.'" class="text-decoration-none">'.$vaga->titulo.'</td>
+                            <td class="text-justify">'.$vaga->descricao.'</td>
                             <td>'.(($vaga->ativo=='s') ? 'Ativo':'Inativo').'</td>
                             <td>'.(date('d/m/Y á\s H:i:s', strtotime($vaga->data))).'</td>
                             <td>
@@ -37,7 +37,6 @@
                             </td>
                         </tr>';
     }
-    //<-- <div style="height:10px;"></div> -->
 
     // Avisa se não houver nenhuma vaga cadastrada:
     if ( $resultados == '' )
@@ -107,22 +106,24 @@
 
     <section>
 
-        <table class="table bg-light mt-3">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Título</th>
-                    <th>Descrição</th>
-                    <th>Status</th>
-                    <th>Data</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <?=$resultados?> <!-- PREENCHENDO AS LINHAS DA TABELA DE FORMA DINÂMICA -->
-            </tbody>
-        </table>
+        <div class="table-responsive mb-1">
+            <table class="table bg-light mt-3">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Título</th>
+                        <th>Descrição</th>
+                        <th>Status</th>
+                        <th>Data</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    <?=$resultados?> <!-- PREENCHENDO AS LINHAS DA TABELA DE FORMA DINÂMICA -->
+                </tbody>
+            </table>
+        </div>
 
     </section>
 
