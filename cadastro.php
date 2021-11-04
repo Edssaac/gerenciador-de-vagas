@@ -10,14 +10,29 @@
 
     // OBRIGA O USUÁRIO A NÃO ESTAR LOGADO:
     Login::requireLogout();
-
+    
     $mensagem = "";
     
     // Validando os campos obrigatórios:
     if ( isset($_POST['name'], $_POST['email'], $_POST['username'], $_POST['password'], $_POST['confirm_password']) )
     {
+        // Pesquisando se já existe um usuário que use o email passado:
+        $objUsuario = Usuario::getUsuarioPorEmail($_POST['email']);
+        if ( $objUsuario instanceof Usuario )
+        {
+            $mensagem = '<div class="alert alert-danger" role="alert">
+                            Atenção! E-mail indisponível.
+                        </div>';
+        }
         // Validando a senha inserida pelo usuário:
-        if ( $_POST['password'] == $_POST['confirm_password'] )
+        else if ( $_POST['password'] != $_POST['confirm_password'] )
+        {
+            $mensagem = '<div class="alert alert-danger" role="alert">
+                            Atenção! Confirme sua senha corretamente.
+                        </div>';
+        }
+        // Coletando as informações validadas e cadastrando o novo usuário:
+        else
         {
             // Criando uma instância da classe Usuário e passando os valores:
             $objUsuario = new Usuario();
@@ -25,15 +40,12 @@
             $objUsuario->email = $_POST['email'];
             $objUsuario->username = $_POST['username'];
             $objUsuario->senha = password_hash($_POST['password'], PASSWORD_DEFAULT); // Transformando a senha do usuário em uma hash;
-
+            
             // Cadastrando o novo usuário:
             $objUsuario->cadastrar();
-        }
-        else
-        {
-            $mensagem = '<div class="alert alert-danger" role="alert">
-                            Atenção! Confirme sua senha corretamente.
-                        </div>';
+
+            // Realizando o login após ser cadastrado:
+            Login::login($objUsuario);
         }
     }
     

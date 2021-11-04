@@ -34,7 +34,7 @@
         {
             // Instânciando o banco de dados:
             $objDatabase = new Database('usuarios');
-
+            
             // Inserindo um novo usuário:
             $this->id = $objDatabase->insert([
                                               "nome"  => $this->nome,
@@ -42,7 +42,7 @@
                                               "username" => $this->username,
                                               "senha" => $this->senha  
                                             ]);
-
+            
             // Retornando sucesso:
             return true;
         }

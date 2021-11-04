@@ -1,3 +1,19 @@
+<?php
+
+  // Dependências necessárias:
+  use \App\Session\Login;
+
+  // Dados do usuário logado:
+  $usuarioLogado = Login::getUsuarioLogado();
+
+  // Criando as informações do campo do usuário:
+  $usuario = ($usuarioLogado) ? 
+      '<div class="h4">'.$usuarioLogado['username'].'</div>'.'<a href="logout.php" class="text-decoration-none text-dark font-weight-bold">Sair</a>' : 
+      '<div class="h4">Visitante</div>'.'<a href="login.php" class="text-decoration-none text-dark font-weight-bold">Entrar</a>';
+
+
+?>
+
 <!doctype html>
   <html lang="en">
     <head> 
@@ -13,6 +29,8 @@
 
       <!-- PAGE ICON -->
       <link rel="shortcut icon" href="https://img.icons8.com/plasticine/100/000000/find-matching-job.png">
+      <!-- UNICONS -->
+      <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 
       <title>Vagas</title>
     </head>
@@ -22,4 +40,9 @@
       <div class="jumbotron bg-danger text-center">
       <h1>Classificados Fatec</h1>
       <p>Gerencie suas ofertas de negócio.</p>
+
+      <div>
+        <i class="uil uil-user-circle text-dark h2"></i>
+        <?=$usuario?>
+      </div>
     </div>

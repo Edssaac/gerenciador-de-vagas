@@ -9,11 +9,69 @@
 
     class Login
     {
+        // Método responsável por iniciar a sessão:
+        public static function init()
+        {
+            // Verifica o status atual da sessão:
+            if ( session_status() !== PHP_SESSION_ACTIVE )
+            {
+                // Inicia a sessão:
+                session_start();
+            }
+        }
+
+        // Método responsável por retornar as informações do usuário logado:
+        public static function getUsuarioLogado()
+        {
+            // Iniciando a sessão:
+            self::init();
+
+            // Retorna os dados do usuário se ele estiver logado:
+            return (self::isLogged()) ? $_SESSION['usuario'] : NULL;
+        }
+
+        // Método responsável por realizar o login do Usuário:
+        public static function login( $objUsuario )
+        {
+            // Inicia a sessão se já não estiver ativa:
+            self::init();
+
+            // Sessão do usuário:
+            $_SESSION['usuario'] = 
+            [
+                'id' => $objUsuario->id,
+                'nome' => $objUsuario->nome,
+                'username' => $objUsuario->username,
+                'email' => $objUsuario->email
+            ];
+
+            // Redirecionando para a página inicial:
+            header('location: index.php');
+            exit;
+        }
+
+        // Método responsável por deslogar o usuário:
+        public static function logout()
+        {
+            // Inicia a sessão:
+            self::init();
+
+            // Desalogando o usuário da sessão;
+            unset( $_SESSION['usuario'] ); 
+
+            // Redirecionando o usuário para a tela de login:
+            header('location: login.php');
+            exit;
+        }
 
         // Método responsável por verificar se o usuário está logado:
         public static function isLogged() 
         {
-            return false;
+            // Inicia a sessão:
+            self::init();
+
+            // Validando a sessão:
+            return isset( $_SESSION['usuario']['id'] );
         }
 
         // Método responsável por obrigar o usuário estar logado para poder acessar a página:
@@ -35,7 +93,6 @@
                 exit;
             }
         }
-
 
     }
 
