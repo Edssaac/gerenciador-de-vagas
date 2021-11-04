@@ -25,10 +25,10 @@
     <title>Vagas</title>
 </head>
 
-<body>
+<body class="bg-dark">
 
-    <nav class="navbar navbar-expand-lg navbar-light navbar-laravel">
-        <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-laravel">
+        <div class="container ">
             <h1 class="navbar-brand">Classificados Fatec</h1>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,3 +47,5 @@
             </div>
         </div>
     </nav>
+
+    <hr>

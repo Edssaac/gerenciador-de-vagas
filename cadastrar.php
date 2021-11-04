@@ -6,7 +6,13 @@
     require __DIR__.'/vendor/autoload.php';
     // PARA PODER USAR A CLASSE VAGA:
     use \App\Entity\Vaga;
+    use \App\Session\Login;
     $objVaga = new Vaga;
+
+    
+    // OBRIGA O USUÁRIO ESTAR LOGADO:
+    Login::requireLogin();
+    
 
     // FAZENDO A VALIDAÇÃO DOS DADOS CADASTRADOS:
     if ( isset( $_POST['titulo'], $_POST['descricao'], $_POST['ativo'] ) )

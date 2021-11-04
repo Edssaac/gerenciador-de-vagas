@@ -6,6 +6,11 @@
     require __DIR__.'/vendor/autoload.php';
     // PARA PODER USAR A CLASSE VAGA:
     use \App\Entity\Vaga;
+    use \App\Session\Login;
+
+    
+    // OBRIGA O USUÁRIO ESTAR LOGADO:
+    Login::requireLogin();
 
 
     // FAZENDO A VALIDAÇÃO DO ID:
