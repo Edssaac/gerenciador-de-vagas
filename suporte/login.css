@@ -1,0 +1,7 @@
+
+/* Remover espaço extra do corpo do formulario de cadastro e login */
+div.row.justify-content-center
+{
+    margin-right: 0;
+    margin-left: 0;
+}
