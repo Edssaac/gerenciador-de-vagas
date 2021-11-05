@@ -7,6 +7,10 @@
 
     use \App\Entity\Usuario;
     use \App\Email\EmailSender;
+    use \App\Session\Login;
+
+    // Limitando o acesso a essa pagina apenas para o usuario que não se encontra logado:
+    Login::requireLogout();
 
     $mensagem = "";
     if ( isset( $_POST['email'] ) )
@@ -27,8 +31,11 @@
             // Coletando os dados necessários para enviar o email:
             $address = $_POST['email'];
             $subject = "Redefinir Senha";
-            $body = EmailSender::getBaseBody( $objUsuario->username );
+            $body = EmailSender::getBaseBody( $objUsuario );
             $altBody = EmailSender::getBaseAltBody();
+
+            // Salvando o email para poder usar no redefinir.php:
+            Login::persistEmail($address);
 
             // Tentando enviar o email:
             if ( $mail->sendEmail( $address, $subject, $body, $altBody ) )

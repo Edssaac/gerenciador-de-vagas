@@ -36,6 +36,10 @@
             // Inicia a sessão se já não estiver ativa:
             self::init();
 
+            // Desalocando a referência ao email de reenvio se existir:
+            if ( isset( $_SESSION['email'] ) )
+                unset( $_SESSION['email'] );
+
             // Sessão do usuário:
             $_SESSION['usuario'] = 
             [
@@ -48,6 +52,16 @@
             // Redirecionando para a página inicial:
             header('location: index.php');
             exit;
+        }
+
+        // Método responsável por salvar na SESSIOn o e-mail a qual foi pedido a troca de senha:
+        public static function persistEmail($email)
+        {
+            // Iniciando a SESSION:
+            self::init();
+
+            // Persistindo o email:
+            $_SESSION['email'] = $email;
         }
 
         // Método responsável por deslogar o usuário:

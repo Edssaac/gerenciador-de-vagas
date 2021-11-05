@@ -112,19 +112,19 @@
         }
 
         // Método responsável por retornar a base do corpo do email:
-        public static function getBaseBody($username)
+        public static function getBaseBody($objUsuario)
         {
             $body = 
             '            
             <div style="border-radius: 5px; box-shadow: 7px 7px 13px 0px rgba(50, 50, 50, 0.22); padding: 30px; margin: 20px; width: 400px; border-left: 3px solid #3bb54a;">
-                <p> Olá <b>'.$username.'</b>, tudo bem?<br>Nós da equipe <b>Classificados Fatec</b> desejamos que sim!</p>
+                <p> Olá <b>'.$objUsuario->username.'</b>, tudo bem?<br>Nós da equipe <b>Classificados Fatec</b> desejamos que sim!</p>
 
                 <p>
                     Recebemos uma solicitação para que sua senha seja redefinida. <br>
                     Clique no botão abaixo para que possa continuar com essa operação:
                     <br><br>
                     <button type="button" style="border:none; border-radius:8px; background-color: #4CAF50; padding: 15px 32px; text-align:center; text-decoration:none; display:inline-block; font-size:16px; margin: 4px 2px; cursor:pointer;">
-                        <a href="google.com" style="text-decoration:none; color:black;">Recuperar Senha</a>
+                        <a href="http://localhost/PHP-CRUD/redefinir.php?token='.$objUsuario->token.'" style="text-decoration:none; color:black;">Recuperar Senha</a>
                     </button>
                     <br><br>
                     Por favor ignore este e-mail caso não o tenha solicitado.
