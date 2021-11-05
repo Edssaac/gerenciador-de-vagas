@@ -1,6 +1,5 @@
 <!-- FORMULÁRIO RESPONSÁVEL POR ENVIAR NOVA SENHA PARA USUÁRIO -->
 
-
 <main class="login-form">
     <div class="cotainer">
 
@@ -16,9 +15,9 @@
                     <div class="card-body bg-secondary">
                         <form action="" method="POST">
                             <div class="form-group row">
-                                <label for="email_address" class="col-md-4 col-form-label text-md-right">E-mail</label>
+                                <label for="email" class="col-md-4 col-form-label text-md-right">E-mail</label>
                                 <div class="col-md-6">
-                                    <input type="email" id="email_address" class="form-control" name="email_address" required autofocus maxlength="25">
+                                    <input type="email" id="email" class="form-control" name="email" required autofocus maxlength="25">
                                 </div>
                             </div>
 

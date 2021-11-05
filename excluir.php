@@ -39,8 +39,8 @@
     }
 
 
-    include __DIR__.'/includes/header.php';
-    include __DIR__.'/includes/confirmar-exclusao.php'; 
-    include __DIR__.'/includes/footer.php';
+    include __DIR__.'/includes/applicationPage/header.php';
+    include __DIR__.'/includes/applicationPage/confirmar-exclusao.php'; 
+    include __DIR__.'/includes/applicationPage/footer.php';
 
 ?>

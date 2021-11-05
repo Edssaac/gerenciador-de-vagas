@@ -1,6 +1,5 @@
 <!-- FORMULÁRIO DE CADASTRO PARA NOVOS USUÁRIOS -->
 
-
 <main class="my-form">
     <div class="cotainer">
 

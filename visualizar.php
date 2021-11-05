@@ -29,8 +29,8 @@
         exit;
     }
 
-    include __DIR__.'/includes/header.php';
-    include __DIR__.'/includes/formulario-visualizar.php'; 
-    include __DIR__.'/includes/footer.php';
+    include __DIR__.'/includes/applicationPage/header.php';
+    include __DIR__.'/includes/applicationPage/formulario-visualizar.php'; 
+    include __DIR__.'/includes/applicationPage/footer.php';
 
 ?>

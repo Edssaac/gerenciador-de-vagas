@@ -27,16 +27,8 @@
         exit;
     }
 
-    include __DIR__.'/includes/header.php';
-    include __DIR__.'/includes/formulario.php'; /* CARREGANDO O FORMULÁRIO RESPONSÁVEL POR REGISTRAR AS INFORMAÇÕES DA NOVA VAGA */
-    include __DIR__.'/includes/footer.php';
-
-    function Debugar($obj)
-    {
-        echo "<pre>";
-        print_r($obj);
-        echo "</pre>";
-        exit;
-    }
+    include __DIR__.'/includes/applicationPage/header.php';
+    include __DIR__.'/includes/applicationPage/formulario.php'; /* CARREGANDO O FORMULÁRIO RESPONSÁVEL POR REGISTRAR AS INFORMAÇÕES DA NOVA VAGA */
+    include __DIR__.'/includes/applicationPage/footer.php';
 
 ?>

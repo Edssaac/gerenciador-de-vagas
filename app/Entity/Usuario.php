@@ -47,15 +47,11 @@
             return true;
         }
 
-
         // Método responsável por retornar uma instância de usuário com base no email recebido:
         public static function getUsuarioPorEmail($email)
         {
             return (new Database('usuarios'))->select('email = "'.$email.'"')->FetchObject(self::class);
         }
-
-
-
 
     }
 

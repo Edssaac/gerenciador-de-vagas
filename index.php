@@ -41,8 +41,8 @@
     $vagas = Vaga::getVagas($where, null, $objPagination->getLimit()); 
 
 
-    include __DIR__.'/includes/header.php';
-    include __DIR__.'/includes/listagem.php'; /* RESPONSÁVEL POR LISTAR TODAS AS VAGAS CADASTRADAS */
-    include __DIR__.'/includes/footer.php';
+    include __DIR__.'/includes/applicationPage/header.php';
+    include __DIR__.'/includes/applicationPage/listagem.php'; /* RESPONSÁVEL POR LISTAR TODAS AS VAGAS CADASTRADAS */
+    include __DIR__.'/includes/applicationPage/footer.php';
 
 ?>
