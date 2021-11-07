@@ -54,14 +54,16 @@
     $paginas = $objPagination->getpages();
     $paginacao = '';
 
+    $hasFields = isset( $_GET['busca'], $_GET['filtroStatus'] ) ? '&' : '';
+
     foreach ( $paginas as $key=>$pagina )
     {
         $class = ($pagina['atual'] ? 'btn-primary' : 'btn-light');
-        $paginacao .= '<a href="?pagina='.$pagina['pagina'].'&'.$gets.'">
+        $paginacao .= '<a href="?pagina='.$pagina['pagina'].$hasFields.$gets.'">
                         <button type="button" class="btn '.$class.'">'.$pagina['pagina'].'</button>
                        </a>';
     }
-
+    
 ?>
 
 

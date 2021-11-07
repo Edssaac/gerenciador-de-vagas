@@ -1,3 +1,9 @@
+<?php
+
+
+?>
+
+
 <main>
 
     <!-- ARQUIVO QUE ARMAZENA O FORMULÁRIO PARA CADASTRAR/EDITAR VAGA -->
@@ -19,7 +25,7 @@
 
         <div class="form-group">
             <label>Descrição</label>
-            <textarea class="form-control text-justify" name="descricao" rows="10" disabled><?=$objVaga->descricao?></textarea>
+            <textarea style="resize:none;" class="form-control text-justify" name="descricao" rows="10" disabled><?=$objVaga->descricao?></textarea>
         </div>
 
         <div class="form-group">
@@ -41,5 +47,11 @@
         </div>
 
     </form>
+
+    <section class="mt-4 mb-4">
+        <form action="" method="post">
+            <button type="submit" name="imprimir" class="btn btn-primary">Imprimir Vaga</button>
+        </form>
+    </section>
 
 </main>
