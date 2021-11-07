@@ -1,9 +1,3 @@
-<?php
-
-
-?>
-
-
 <main>
 
     <!-- ARQUIVO QUE ARMAZENA O FORMULÁRIO PARA CADASTRAR/EDITAR VAGA -->
@@ -49,8 +43,8 @@
     </form>
 
     <section class="mt-4 mb-4">
-        <form action="" method="post">
-            <button type="submit" name="imprimir" class="btn btn-primary">Imprimir Vaga</button>
+        <form target="_blank" action="visualizar.php?id=<?=$objVaga->id?>" method="post">
+            <button type="submit" name="imprimir" class="btn btn-primary"><i class="uil uil-arrow-down"></i> Salvar Vaga</button>
         </form>
     </section>
 

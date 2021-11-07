@@ -8,7 +8,7 @@
     // Dependências necessárias:
     use \App\Entity\Vaga;
     use \App\Session\Login;
-    use Dompdf\Dompdf;
+    use \App\Utils\Util;
     
     // OBRIGA O USUÁRIO ESTAR LOGADO:
     Login::requireLogin();
@@ -30,26 +30,10 @@
         exit;
     }
 
-
     // Verificando se foi requisitado a impressão da vaga:
     if ( isset( $_POST['imprimir'] ) )
     {
-        echo "impimrindo";
-
-        // Instância do Dompdf:
-        $dompdf = new Dompdf();
-
-        // Carrega o html para dentro da classe:
-        $dompdf->loadHtml("<b>Ola</b>");
-
-        // Renderiza o html em pdf:
-        $dompdf->render();
-
-        // Cabeçalho de impressão:
-        header('Content-type: application/pdf');
-        // Imprimir o conteúdo do pdf na tela:
-        echo $dompdf->output();
-
+        Util::getVagaPDF( $objVaga );
     }
 
 
