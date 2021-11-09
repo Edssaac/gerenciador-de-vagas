@@ -18,7 +18,8 @@
         {
             // Instâncias do Dompdf:
             $options = new Options();
-            $options->set('isRemoteEnabled', true);
+            $options->setChRoot(__DIR__);
+            $options->setIsRemoteEnabled(true);
             $dompdf = new Dompdf($options);
 
             $pagina = 
@@ -127,6 +128,11 @@
                         text-align: center;
                     }
 
+                    .footer a {
+                        text-decoration: none;
+                        color: white;
+                    }
+
                 </style>
 
             </head>
@@ -169,7 +175,7 @@
                     </div>
 
                     <div class="footer">
-                        <p>Disponível em: <b>https://'.$_SERVER['SERVER_NAME'].$_SERVER["REQUEST_URI"].'</b></p>                  
+                        <p>Disponível em: <b><a style="" href="https://'.$_SERVER['SERVER_NAME'].$_SERVER["REQUEST_URI"].'">ClassificadosFatec/Vaga_'.$objVaga->titulo.'</a></b></p>         
                     </div>
                 </main>
             <div>
@@ -177,6 +183,9 @@
 
             // Carrega o html para dentro da classe:
             $dompdf->loadHtml($pagina);
+
+            // Formato da página:
+            $dompdf->setPaper('A4', 'portrait');
 
             // Renderiza o html em pdf:
             $dompdf->render();
