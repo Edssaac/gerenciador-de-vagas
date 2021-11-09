@@ -38,16 +38,34 @@
                     * {
                         margin: 0;
                         padding: 0;
+                    }
+
+                    body {
                         background-color: #343a40;
                         color: white;
+                        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+                        font-size: 1rem;
+                        font-weight: 400;
+                        line-height: 1.5;
+                    }
+
+                    h1 {
+                        font-size: 2.3rem;
                     }
 
                     .container {
                         width: 100%;
-                        margin-top: 50px;
+                        margin-top: 30px;
                         margin-right: 50px;
                         margin-left: 50px;
-                        background-color:
+                    }
+
+                    .jumbotron {
+                        text-align: center;
+                        background-color: #dc3545;
+                        border-radius: 0.25rem;
+                        padding: 70px;
+                        margin-bottom: 20px;
                     }
 
                     .form-control {
@@ -56,16 +74,19 @@
                         height: auto;
                         text-align: justify;
                         padding: 10px;
+                        color: #69737c;
                     }
 
                     .form-group {
-                        margin-bottom: 30px;
+                        //margin-bottom: 30px;
                         display: block;
                     }
 
-                    .form-check {
+                    .form-check .form-control {
                         border: 1px solid #ced4da;
                         border-radius: 0.25rem;
+                        background-color: white;
+                        padding-top: 5px;
                     }
 
                     div.form-check-inline {
@@ -81,12 +102,13 @@
                     div.form-check.form-check-inline {
                         padding-right: 3px;
                         padding-left: 3px;
-                        width: 130px;
+                        width: 100px;
                     }
                     
                     label {
                         display: inline-block;
                         margin-bottom: 0.5rem;
+                        margin-top: 20px;
                     }
 
                     input, textarea {
@@ -94,7 +116,16 @@
                         border-radius: 0.25rem;
                         font-family: inherit;
                         font-size: inherit;
-                    }                   
+                    }   
+                   
+                    .footer {
+                        position: absolute; 
+                        bottom: 10px;
+                    }
+
+                    .footer p {
+                        text-align: center;
+                    }
 
                 </style>
 
@@ -102,6 +133,11 @@
 
             <div class="container">
                 <main>
+
+                    <div class="jumbotron">
+                        <h1>Classificados Fatec</h1>
+                    </div>
+                    
                     <div>
                         <div class="form-group">
                             <label>Título</label>
@@ -116,7 +152,7 @@
                         <div class="form-group">
                             <label>Status</label>
                             
-                            <div>
+                            <div style="margin-top: -15px;">
                                 <div class="form-check form-check-inline">
                                     <label class="form-control">
                                         <input type="radio" name="ativo" value="s" checked disabled> Ativo
@@ -132,8 +168,9 @@
                         </div>
                     </div>
 
-                    <div>
-                        Disponível em: <b>https://'.$_SERVER['SERVER_NAME'].$_SERVER["REQUEST_URI"].' </b>                   </div>
+                    <div class="footer">
+                        <p>Disponível em: <b>https://'.$_SERVER['SERVER_NAME'].$_SERVER["REQUEST_URI"].'</b></p>                  
+                    </div>
                 </main>
             <div>
             ';
