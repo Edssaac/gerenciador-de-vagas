@@ -36,13 +36,14 @@
     </head>
     <body class="bg-dark text-light">
 
-    <div class="container">
+    <!-- Abertura do container -->
+    <div class="container"> 
       <div class="jumbotron bg-danger text-center">
-      <h1>Classificados Fatec</h1>
-      <p>Gerencie suas ofertas de negócio.</p>
+        <h1>Classificados Fatec</h1>
+        <p>Gerencie suas ofertas de negócio.</p>
 
-      <div>
-        <i class="uil uil-user-circle text-dark h2"></i>
-        <?=$usuario?>
-      </div>
+        <div>
+          <i class="uil uil-user-circle text-dark h2"></i>
+          <?=$usuario?>
+        </div>
     </div>
