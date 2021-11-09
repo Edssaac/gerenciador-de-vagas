@@ -12,7 +12,6 @@
 
     class Util
     {
-
         // Método responsável por receber um objeto da classe vaga 
         // e retornar um corpo html com o conteúdo da vaga.
         public static function getVagaPDF( $objVaga )
