@@ -134,7 +134,7 @@
                     </div>
 
                     <div>
-                        Disponível em: <b>http://'.$_SERVER['SERVER_NAME'].$_SERVER["REQUEST_URI"].' </b>                   </div>
+                        Disponível em: <b>https://'.$_SERVER['SERVER_NAME'].$_SERVER["REQUEST_URI"].' </b>                   </div>
                 </main>
             <div>
             ';
