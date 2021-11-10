@@ -108,6 +108,35 @@
             }
         }
 
+        // Método responsável por permitir acesso apenas para usuários administradores:
+        public static function requireAdminUser( $pageAcess )
+        {
+            // Se não estiver logado  e se precisar de acesso a pagina:
+            if ( !self::isLogged() && $pageAcess )
+            {
+                header("location: index.php");
+                exit;
+            }
+
+            // 1 = Admin;
+            // 0 = Usuario Comum / Visitante
+
+            if ( self::isLogged() )
+            {   
+                $userEmail = $_SESSION['usuario']['email'];
+
+                $admins = array( 'pathrok@gmail.com' );
+
+                if ( in_array( $userEmail, $admins ) ) 
+                {return 1;}
+                else if ( $pageAcess )
+                {header("location: index.php");exit;}
+                else return 0;
+            }
+
+            return 0;
+        }
+
     }
 
 ?>

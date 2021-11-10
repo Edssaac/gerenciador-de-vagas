@@ -10,8 +10,10 @@
 
     
     // OBRIGA O USUÁRIO ESTAR LOGADO:
-    Login::requireLogin();
+    // Login::requireLogin();
 
+    // Apenas para administradores:
+    Login::requireAdminUser( true );
 
     // FAZENDO A VALIDAÇÃO DO ID:
     if ( !isset($_GET['id']) || !is_numeric($_GET['id']) )

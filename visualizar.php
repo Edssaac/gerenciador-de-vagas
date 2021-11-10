@@ -11,7 +11,8 @@
     use \App\Utils\Util;
     
     // OBRIGA O USUÁRIO ESTAR LOGADO:
-    Login::requireLogin();
+    //Login::requireLogin();
+    
     
 
     // FAZENDO A VALIDAÇÃO DO ID:

@@ -19,7 +19,7 @@
 
         <div class="form-group">
             <label>Descrição</label>
-            <textarea class="form-control text-justify" name="descricao" rows="10" required><?=$objVaga->descricao?></textarea>
+            <textarea class="form-control text-justify" name="descricao" rows="10" required><?=str_replace('<br />', '', nl2br($objVaga->descricao))?></textarea>
         </div>
 
         <div class="form-group">

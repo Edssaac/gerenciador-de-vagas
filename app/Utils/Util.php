@@ -152,7 +152,7 @@
                 
                         <div class="form-group">
                             <label>Descrição</label>
-                            <textarea style="resize:none;" class="form-control text-justify" name="descricao" rows="10" disabled>'.$objVaga->descricao.'</textarea>
+                            <textarea style="resize:none;" class="form-control text-justify" name="descricao" rows="10" disabled>'.(str_replace('<br />', '', nl2br($objVaga->descricao))).'</textarea>
                         </div>
                 
                         <div class="form-group">

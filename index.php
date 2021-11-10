@@ -9,7 +9,10 @@
 
     
     // OBRIGA O USUÁRIO ESTAR LOGADO:
-    Login::requireLogin();
+    //Login::requireLogin();
+
+    // Tela inicial, podem acessar com ou sem login
+    $acesso = Login::requireAdminUser( false );
 
     // BUSCA:
     $busca = filter_input(INPUT_GET, 'busca', FILTER_SANITIZE_STRING);

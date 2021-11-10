@@ -22,27 +22,65 @@
         }
     }
 
-    $resultados = ''; /* VARIÁVEL QUE ARMAZENARA TODAS AS VAGAS DENTRO DE NOSSO ARRAY */
-    foreach ( $vagas as $vaga ) /* CRIANDO UMA LINHA NA TABELA PARA CADA VAGA DISPONÍVEL */
+    if ( $acesso ) // Interface Adminstrativa:
     {
-        $desc = ( strlen($vaga->descricao)>20 ) ? substr( $vaga->descricao, 0, 11 )."..." : $vaga->descricao;
-
-        $resultados .= '<tr>
-                            <td>'.$vaga->id.'</td>
-                            <td><a href="visualizar.php?id='.$vaga->id.'" class="text-decoration-none">'.$vaga->titulo.'</td>
-                            <td>'.$desc.'</td>
-                            <td>'.(($vaga->ativo=='s') ? 'Ativo':'Inativo').'</td>
-                            <td>'.(date('d/m/Y á\s H:i:s', strtotime($vaga->data))).'</td>
-                            <td class="btns">
-                                <a href="editar.php?id='.$vaga->id.'"><button type="button" class="btn btn-primary">Editar</button></a>
-                                <a href="excluir.php?id='.$vaga->id.'"><button type="button" class="btn btn-danger">Excluir</button></a>
-                            </td>
-                        </tr>';
+        $resultados = ''; /* VARIÁVEL QUE ARMAZENARA TODAS AS VAGAS DENTRO DE NOSSO ARRAY */
+        foreach ( $vagas as $vaga ) /* CRIANDO UMA LINHA NA TABELA PARA CADA VAGA DISPONÍVEL */
+        {
+            $desc = ( strlen($vaga->descricao)>20 ) ? substr( $vaga->descricao, 0, 11 )."..." : $vaga->descricao;
+    
+            $resultados .= '<tr>
+                                <td>'.$vaga->id.'</td>
+                                <td><a href="visualizar.php?id='.$vaga->id.'" class="text-decoration-none">'.$vaga->titulo.'</td>
+                                <td>'.$desc.'</td>
+                                <td>'.(($vaga->ativo=='s') ? 'Ativo':'Inativo').'</td>
+                                <td>'.(date('d/m/Y á\s H:i:s', strtotime($vaga->data))).'</td>
+                                <td class="btns">
+                                    <a href="editar.php?id='.$vaga->id.'"><button type="button" class="btn btn-primary">Editar</button></a>
+                                    <a href="excluir.php?id='.$vaga->id.'"><button type="button" class="btn btn-danger">Excluir</button></a>
+                                </td>
+                            </tr>';
+        }
+    
+        $ths = '
+            <th>ID</th>
+            <th>Título</th>
+            <th>Descrição</th>
+            <th>Status</th>
+            <th>Data</th>
+            <th>Ações</th>
+        ';
+    
+        // Avisa se não houver nenhuma vaga cadastrada:
+        if ( $resultados == '' )
+            $resultados = '<tr><td colspan="6" class="text-center">Nenhuma vaga cadastrada no momento.</td></tr>';  
     }
-
-    // Avisa se não houver nenhuma vaga cadastrada:
-    if ( $resultados == '' )
-        $resultados = '<tr><td colspan="6" class="text-center">Nenhuma vaga cadastrada no momento.</td></tr>';  
+    else // Interface Usuário Comum
+    {
+        $resultados = ''; /* VARIÁVEL QUE ARMAZENARA TODAS AS VAGAS DENTRO DE NOSSO ARRAY */
+        foreach ( $vagas as $vaga ) /* CRIANDO UMA LINHA NA TABELA PARA CADA VAGA DISPONÍVEL */
+        {
+            //$desc = ( strlen($vaga->descricao)>40 ) ? substr( $vaga->descricao, 0, 40 )."..." : $vaga->descricao;
+    
+            $resultados .= '<tr>
+                                <td><a href="visualizar.php?id='.$vaga->id.'" class="text-decoration-none">'.$vaga->titulo.'</td>
+                                <td>'.$vaga->descricao.'</td>
+                                <td>'.(($vaga->ativo=='s') ? 'Ativo':'Inativo').'</td>
+                                <td>'.(date('d/m/Y', strtotime($vaga->data))).'</td>
+                            </tr>';
+        }
+    
+        $ths = '
+            <th>Título</th>
+            <th>Descrição</th>
+            <th>Status</th>
+            <th>Data</th>
+        ';
+    
+        // Avisa se não houver nenhuma vaga cadastrada:
+        if ( $resultados == '' )
+            $resultados = '<tr><td colspan="4" class="text-center">Nenhuma vaga cadastrada no momento.</td></tr>';  
+    }
 
 
     // Limpar alguns campos do GET:
@@ -63,7 +101,7 @@
                         <button type="button" class="btn '.$class.'">'.$pagina['pagina'].'</button>
                        </a>';
     }
-    
+
 ?>
 
 
@@ -114,12 +152,7 @@
             <table class="table bg-light mt-3">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Título</th>
-                        <th>Descrição</th>
-                        <th>Status</th>
-                        <th>Data</th>
-                        <th>Ações</th>
+                        <?=$ths?>
                     </tr>
                 </thead>
                 
