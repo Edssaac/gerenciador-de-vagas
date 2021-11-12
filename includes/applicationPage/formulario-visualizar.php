@@ -17,9 +17,13 @@
             <input type="text" class="form-control" name="titulo" value="<?=$objVaga->titulo?>" disabled>
         </div>
 
+        <?php
+            $rows =  substr_count( nl2br($objVaga->descricao), '<br />') + 10;
+        ?>
+
         <div class="form-group">
             <label>Descrição</label>
-            <textarea style="resize:none;" class="form-control text-justify" name="descricao" rows="10" disabled><?=str_replace('<br />', '', nl2br($objVaga->descricao))?></textarea>
+            <textarea style="resize:none;" class="form-control text-justify" name="descricao" rows="<?=$rows?>" disabled><?=str_replace('<br />', '', nl2br($objVaga->descricao))?></textarea>
         </div>
 
         <div class="form-group">
