@@ -107,6 +107,7 @@
             } catch (Exception $e) 
             {
                 $this->error = $e->getMessage();
+                var_dump($this->error = $e->getMessage());
                 return false;
             }
         }
