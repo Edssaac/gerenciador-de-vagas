@@ -141,7 +141,7 @@
                 <main>
 
                     <div class="jumbotron">
-                        <h1>Classificados Fatec</h1>
+                        <h1>Banco de Vagas</h1>
                     </div>
                     
                     <div>
@@ -175,7 +175,7 @@
                     </div>
 
                     <div class="footer">
-                        <p>Disponível em: <b><a style="" href="https://'.$_SERVER['SERVER_NAME'].$_SERVER["REQUEST_URI"].'">ClassificadosFatec/Vaga_'.$objVaga->titulo.'</a></b></p>         
+                        <p>Disponível em: <b><a style="" href="https://'.$_SERVER['SERVER_NAME'].$_SERVER["REQUEST_URI"].'">bancodevagas/Vaga_'.$objVaga->titulo.'</a></b></p>         
                     </div>
                 </main>
             <div>

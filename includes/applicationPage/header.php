@@ -39,7 +39,7 @@
     <!-- Abertura do container -->
     <div class="container"> 
       <div class="jumbotron bg-danger text-center">
-        <h1>Classificados Fatec</h1>
+        <h1>Banco de Vagas</h1>
         <p>Gerencie suas ofertas de negócio.</p>
 
         <div>

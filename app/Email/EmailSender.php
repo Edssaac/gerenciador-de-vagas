@@ -14,15 +14,15 @@
     {
         // Dados necessários para conectar com o gmail:
         const HOST = 'smtp.gmail.com';
-        const USER = 'classificadosfatec@gmail.com';
+        const USER = 'bancodevagas@gmail.com';
         const PASS = 'e-J:LF5p:VevGfz';
         const SECURE = 'TLS';
         const PORT = '587';
         const CHARSET = 'UTF-8';
 
         // Dados do remetente:
-        const FROM_EMAIL = 'classificadosfatec@gmail.com';
-        const FROM_NAME = 'Classificados Fatec';
+        const FROM_EMAIL = 'bancodevagas@gmail.com';
+        const FROM_NAME = 'Banco de Vagas';
 
         // Responsável por armazenar a mensagem de erro caso exista:
         private $error;
@@ -118,7 +118,7 @@
             $body = 
             '            
             <div style="border-radius: 5px; box-shadow: 7px 7px 13px 0px rgba(50, 50, 50, 0.22); padding: 30px; margin: 20px; width: 400px; border-left: 3px solid #3bb54a;">
-                <p> Olá <b>'.$objUsuario->username.'</b>, tudo bem?<br>Nós da equipe <b>Classificados Fatec</b> desejamos que sim!</p>
+                <p> Olá <b>'.$objUsuario->username.'</b>, tudo bem?<br>Nós da equipe <b>Banco de Vagas</b> desejamos que sim!</p>
 
                 <p>
                     Recebemos uma solicitação para que sua senha seja redefinida. <br>
@@ -130,7 +130,7 @@
                     <br><br>
                     Por favor ignore este e-mail caso não o tenha solicitado.
                     <br><br>
-                    Atenciosamente, <b>Classificados Fatec</b>.
+                    Atenciosamente, <b>Banco de Vagas</b>.
                 </p>
             </div>';
 

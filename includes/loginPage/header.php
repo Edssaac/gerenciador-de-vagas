@@ -29,7 +29,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark navbar-laravel">
         <div class="container ">
-            <h1 class="navbar-brand"><a href="/" class="text-light">Classificados Fatec</a></h1>
+            <h1 class="navbar-brand"><a href="/" class="text-light">Banco de Vagas</a></h1>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
