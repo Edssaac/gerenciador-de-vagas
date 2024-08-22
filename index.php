@@ -1,51 +1,150 @@
-<?php 
+<?php
 
-    /* ARQUIVO RESPONSÁVEL POR SER A PÁGINA INICIAL E PRINCIPAL DO SITE */
+require_once(__DIR__ . '/system/vendor/autoload.php');
 
-    require __DIR__.'/vendor/autoload.php';
-    use \App\Entity\Vaga;
-    use \App\Db\Pagination;
-    use \App\Session\Login;
+use Library\Session;
+use Library\Log;
+use Exception;
 
-    
-    // OBRIGA O USUÁRIO ESTAR LOGADO:
-    //Login::requireLogin();
+set_exception_handler(function (Throwable $exception) {
+    Log::write(sprintf(
+        'Exceção: %s - Arquivo: %s - Linha: %s',
+        $exception->getMessage(),
+        $exception->getFile(),
+        $exception->getLine()
+    ));
 
-    // Tela inicial, podem acessar com ou sem login
-    $acesso = Login::requireAdminUser( false );
+    $_SESSION['INTERNAL_SITUATION'] = 500;
 
-    // BUSCA:
-    $busca = filter_input(INPUT_GET, 'busca', FILTER_SANITIZE_STRING);
+    Session::logout();
+});
 
-    // STATUS:
-    $filtroStatus = filter_input(INPUT_GET, 'filtroStatus', FILTER_SANITIZE_STRING);
-    $filtroStatus = in_array($filtroStatus, ['s', 'n']) ? $filtroStatus : '';
-    
-    // CONDIÇÕES SQL:
-    $condicoes = [
-        strlen($busca) ? 'titulo LIKE "%'.str_replace(' ', '%', $busca).'%"' : null,
-        strlen($filtroStatus) ? 'ativo = "'.$filtroStatus.'"' : null
+set_error_handler(function ($errorLevel, $errorMessage, $errorFile, $errorLine) {
+    if (error_reporting() === 0) {
+        return false;
+    }
+
+    switch ($errorLevel) {
+        case E_NOTICE:
+        case E_USER_NOTICE:
+            $error = 'Notice';
+            break;
+        case E_WARNING:
+        case E_USER_WARNING:
+            $error = 'Warning';
+            break;
+        case E_ERROR:
+        case E_USER_ERROR:
+            $error = 'Fatal Error';
+            break;
+        default:
+            $error = 'Unknown';
+            break;
+    }
+
+    Log::write(sprintf(
+        '%s: %s - Arquivo: %s - Linha: %s',
+        $error,
+        $errorMessage,
+        $errorFile,
+        $errorLine
+    ));
+
+    return true;
+});
+
+function loadEnvironmentVariables()
+{
+    if (!file_exists(__DIR__ . '/.env')) {
+        throw new Exception('Arquivo .env não encontrado no projeto!');
+    }
+
+    $lines = file(__DIR__ . '/.env', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+
+    foreach ($lines as $line) {
+        if (strpos($line, '#') !== false) {
+            $line = strstr($line, '#', true);
+        }
+
+        $line = trim($line);
+
+        if (!empty($line)) {
+            list($key, $value) = explode('=', $line, 2) + [NULL, NULL];
+
+            if ($key !== NULL && $value !== NULL) {
+                $_ENV[trim($key)] = trim($value);
+            }
+        }
+    }
+
+    $requested = [
+        'DB_HOST',
+        'DB_NAME',
+        'DB_USER',
+        'DB_PASSWORD',
+        'MAIL_ADDRESS',
+        'MAIL_PASSWORD',
+        'MAIL_USERNAME',
+        'PAGINATION_LIMIT'
     ];
 
-    // REMOVE POSIÇÕES VAZIAS:
-    $condicoes = array_filter($condicoes);
+    $diff = array_diff($requested, array_keys($_ENV));
 
-    // CLÁUSULA WHERE:
-    $where = implode(' AND ', $condicoes);
+    if (!empty($diff)) {
+        throw new Exception('Variáveis de ambiente não encontradas no arquivo .env!');
+    }
+}
 
-    // QUANTIDADE TOTAL DE VAGAS:
-    $quantidadeVagas = Vaga::getQuantidadeVagas($where);
+function handleRoute()
+{
+    $requestUri = $_SERVER['REQUEST_URI'];
+    $url = parse_url(trim($requestUri, '/'), PHP_URL_PATH);
+    $urlParts = explode('/', $url);
 
-    // PAGINAÇÃO:
-    $objPagination = new Pagination( $quantidadeVagas, $_GET['pagina'] ?? 1, 6 );
+    $path = [
+        'controller'    => !empty($urlParts[0]) ? strtolower($urlParts[0]) : 'job',
+        'method'        => !empty($urlParts[1]) ? strtolower($urlParts[1]) : 'index'
+    ];
 
+    // Criar o controlador de forma dinâmica
+    $formattedPath = implode('/', [
+        'App/Controller',
+        ucfirst($path['controller']) . 'Controller.php'
+    ]);
 
-    /* PEGANDO TODAS AS VAGAS PARA PODER PASSAR PARA O LISTAGEM.PHP */
-    $vagas = Vaga::getVagas($where, null, $objPagination->getLimit()); 
+    // Verificar se o controlador existe
+    if (!file_exists($formattedPath)) {
+        header('Location: /');
+    }
 
+    $request = file_get_contents("php://input");
 
-    include __DIR__.'/includes/applicationPage/header.php';
-    include __DIR__.'/includes/applicationPage/listagem.php'; /* RESPONSÁVEL POR LISTAR TODAS AS VAGAS CADASTRADAS */
-    include __DIR__.'/includes/applicationPage/footer.php';
+    if (empty($_POST) && !empty($request)) {
+        $_POST = json_decode($request, true);
+    }
 
-?>
+    include_once($formattedPath);
+
+    $controllerClass = implode('\\', [
+        'App\\Controller',
+        ucfirst($path['controller']) . 'Controller'
+    ]);
+
+    $controllerObject = new $controllerClass();
+
+    // Verificar se o método existe no controlador
+    if (method_exists($controllerObject, $path['method'])) {
+        // Chamar o método do controlador
+        call_user_func(array($controllerObject, $path['method']));
+    } else {
+        header('Location: /');
+    }
+}
+
+Session::init();
+
+if (!isset($_SESSION['INTERNAL_SITUATION'])) {
+    loadEnvironmentVariables();
+}
+
+handleRoute();
