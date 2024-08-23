@@ -4,13 +4,17 @@
 
 **Descrição:**
 
-...
+O Gerenciador de Vagas é uma aplicação projetada para simplificar o gerenciamento de vagas de trabalho. Com esta plataforma, você pode criar, 
+editar e excluir suas próprias vagas de emprego de forma intuitiva. Além disso, é possível visualizar as vagas cadastradas por outros usuários 
+e baixá-las em formato PDF para sua conveniência. A plataforma inclui um sistema completo de usuários, permitindo que você se cadastre, 
+faça login e, se necessário, recupere sua senha de maneira segura, assim oferecendo uma experiência completa e fácil de usar para quem busca 
+gerenciar ou encontrar oportunidades de trabalho.
 
 ![demo](https://raw.githubusercontent.com/Edssaac/gerenciador-de-vagas/main/public/images/demo/vacancy-manager.gif)
 
 **Objetivo:**
 
-Implementar um gerenciador de vagas em PHP.
+Implementar um sistema de usuários e permissões utilizando PHP.
 
 **Tecnologias Utilizadas:**
 
