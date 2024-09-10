@@ -1,6 +1,6 @@
 {
     "name": "edssaac/job-manager",
-    "description": "",
+    "description": "Gerenciador de vagas",
     "type": "project",
     "license": "MIT",
     "authors": [
