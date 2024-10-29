@@ -8,7 +8,7 @@ O Gerenciador de Vagas é uma plataforma prática para gerenciar vagas de empreg
 Além disso, é possível visualizar e baixar vagas de outros usuários em PDF. O sistema de usuários permite cadastro, login e recuperação de senha, 
 garantindo uma experiência segura e eficiente para quem busca gerenciar ou encontrar oportunidades de trabalho.
 
-![demo](https://raw.githubusercontent.com/Edssaac/gerenciador-de-vagas/main/public/images/demo/vacancy-manager.gif)
+![demo](./public/images/demo/vacancy-manager.gif)
 
 **Objetivo:**
 
@@ -110,3 +110,4 @@ Se desejar encerrar o servidor, basta pressionar `ctrl + C` no terminal onde o s
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/edssaac)
 [![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:edssaac@gmail.com)
 [![Outlook](https://img.shields.io/badge/Outlook-0078D4?style=for-the-badge&logo=microsoft-outlook&logoColor=white)](mailto:edssaac@outlook.com)
+[![Linkedin](https://img.shields.io/badge/LinkedIn-black.svg?style=for-the-badge&logo=linkedin&color=informational)](https://www.linkedin.com/in/edssaac/)
