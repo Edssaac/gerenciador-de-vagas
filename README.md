@@ -65,6 +65,8 @@ CREATE TABLE IF NOT EXISTS `job` (
 
 **Instruções de Instalação e Configuração:**
 
+> Atenção: Obrigatório o uso de Docker em sua máquina.
+
 1. Clone o repositório do projeto:
 ```
 git clone https://github.com/edssaac/gerenciador-de-vagas
