@@ -4,7 +4,6 @@ require_once(__DIR__ . '/system/vendor/autoload.php');
 
 use Library\Session;
 use Library\Log;
-use Exception;
 
 set_exception_handler(function (Throwable $exception) {
     Log::write(sprintf(
@@ -59,25 +58,10 @@ function loadEnvironmentVariables()
         throw new Exception('Arquivo .env não encontrado no projeto!');
     }
 
-    $lines = file(__DIR__ . '/.env', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+    $dotenv->load();
 
-    foreach ($lines as $line) {
-        if (strpos($line, '#') !== false) {
-            $line = strstr($line, '#', true);
-        }
-
-        $line = trim($line);
-
-        if (!empty($line)) {
-            list($key, $value) = explode('=', $line, 2) + [NULL, NULL];
-
-            if ($key !== NULL && $value !== NULL) {
-                $_ENV[trim($key)] = trim($value);
-            }
-        }
-    }
-
-    $requested = [
+    $dotenv->required([
         'DB_HOST',
         'DB_NAME',
         'DB_USER',
@@ -86,13 +70,7 @@ function loadEnvironmentVariables()
         'MAIL_PASSWORD',
         'MAIL_USERNAME',
         'PAGINATION_LIMIT'
-    ];
-
-    $diff = array_diff($requested, array_keys($_ENV));
-
-    if (!empty($diff)) {
-        throw new Exception('Variáveis de ambiente não encontradas no arquivo .env!');
-    }
+    ])->notEmpty();
 }
 
 function handleRoute()
