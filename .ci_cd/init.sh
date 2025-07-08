@@ -14,4 +14,6 @@ fi
 
 cd "$PROJECT_ROOT"
 
+echo "Iniciando o Docker Compose..."
+
 docker compose --env-file .ci_cd/.docker.env -f .ci_cd/docker-compose.yml up --build -d
