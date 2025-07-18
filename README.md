@@ -16,7 +16,7 @@ Implementar um sistema de usuários e permissões utilizando PHP.
 
 **Tecnologias Utilizadas:**
 
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=fff)
+![DOCKER](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=fff)
 ![COMPOSER](https://img.shields.io/badge/Composer-885630?style=for-the-badge&logo=composer&logoColor=white)
 ![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)
 ![MYSQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
@@ -33,7 +33,7 @@ Se você é um desenvolvedor interessado em contribuir ou entender melhor o func
 **Ambiente:**
 
 ![PHP](https://img.shields.io/badge/PHP-8.4-777BB4?style=for-the-badge&logo=php)
-![PHP](https://img.shields.io/badge/MySQL-8.0-005C84?style=for-the-badge&logo=mysql)
+![MYSQL](https://img.shields.io/badge/MySQL-8.0-005C84?style=for-the-badge&logo=mysql)
 
 ```sql
 CREATE DATABASE IF NOT EXISTS `vacancy_manager`;
@@ -60,8 +60,6 @@ CREATE TABLE IF NOT EXISTS `job` (
     FOREIGN KEY (`user_id`) REFERENCES `user`(`id`)
 );
 ```
-
-<br>
 
 **Instruções de Instalação e Configuração:**
 
@@ -93,7 +91,6 @@ Caso deseje encerrar e remover os volumes criados, use:
 ```
 .ci_cd/stop.sh -v
 ```
-
 
 ## Contato
 
