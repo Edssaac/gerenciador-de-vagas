@@ -79,7 +79,7 @@ cd gerenciador-de-vagas
 ```
 .ci_cd/init.sh  
 ```
-Com isso a aplicação estará acessivel: [http://localhost:8081](http://localhost:8081)
+Com isso a aplicação estará acessivel: [http://localhost:8080](http://localhost:8080)
 
 ---
 
