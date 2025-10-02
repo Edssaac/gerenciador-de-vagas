@@ -4,8 +4,8 @@
         <p>Gerencie suas ofertas de negócio.</p>
         <div>
             <i class="fa-solid fa-circle-user"></i>
-            <?php if ($data['user']) { ?>
-                <div class="h4"><?= $data['user']['name'] ?></div>
+            <?php if ($data["user"]) { ?>
+                <div class="h4"><?= $data["user"]["name"] ?></div>
                 <a href="/user/logout" class="text-decoration-none text-dark font-weight-bold">Sair</a>
             <?php } else { ?>
                 <div class="h4">Visitante</div>
@@ -13,9 +13,9 @@
             <?php } ?>
         </div>
     </div>
-    <?php if (isset($data['message'])) { ?>
-        <div class='alert alert-<?= $data['message_type'] ?> mt-4 text-center' role='alert'>
-            <?= $data['message'] ?>
+    <?php if (isset($data["message"])) { ?>
+        <div class="alert alert-<?= $data["message_type"] ?> mt-4 text-center" role="alert">
+            <?= $data["message"] ?>
         </div>
     <?php } ?>
     <section>
@@ -28,14 +28,14 @@
             <div class="row align-items-end mt-5 filter-section">
                 <div class="col-12 col-sm-7 col-md-5 col-lg-5">
                     <label for="filter_title">Buscar por título de vaga</label>
-                    <input type="text" id="filter_title" name="filter_title" class="form-control" value="<?= $data['filter_title'] ?>">
+                    <input type="text" id="filter_title" name="filter_title" class="form-control" value="<?= $data["filter_title"] ?>">
                 </div>
                 <div class="col-6 col-sm-4 col-md-3 col-lg-3">
                     <label for="filter_status">Status</label>
                     <select id="filter_status" name="filter_status" class="form-control">
-                        <option value="" <?= ($data['filter_status'] == '') ? 'selected' : '' ?>>Ativa/Inativa</option>
-                        <option value="1" <?= ($data['filter_status'] == '1') ? 'selected' : '' ?>>Ativa</option>
-                        <option value="0" <?= ($data['filter_status'] == '0') ? 'selected' : '' ?>>Inativa</option>
+                        <option value="" <?= ($data["filter_status"] == "") ? "selected" : "" ?>>Ativa/Inativa</option>
+                        <option value="1" <?= ($data["filter_status"] == "1") ? "selected" : "" ?>>Ativa</option>
+                        <option value="0" <?= ($data["filter_status"] == "0") ? "selected" : "" ?>>Inativa</option>
                     </select>
                 </div>
                 <div class="col-12 col-sm-12 col-md-3 col-lg-3 d-md-flex justify-content-around">
@@ -59,26 +59,26 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php if (!empty($data['jobs'])) { ?>
-                        <?php foreach ($data['jobs'] as $job) { ?>
-                            <tr class="job-<?= $job['id'] ?>">
-                                <td><?= $job['title'] ?></td>
-                                <td><?= $data['status_list'][$job['status']] ?></td>
-                                <td><?= (date('d/m/Y á\s H:i:s', strtotime($job['date']))) ?></td>
+                    <?php if (!empty($data["jobs"])) { ?>
+                        <?php foreach ($data["jobs"] as $job) { ?>
+                            <tr class="job-<?= $job["id"] ?>">
+                                <td><?= $job["title"] ?></td>
+                                <td><?= $data["status_list"][$job["status"]] ?></td>
+                                <td><?= (date("d/m/Y á\s H:i:s", strtotime($job["date"]))) ?></td>
                                 <td class="text-center">
-                                    <a href="/job/view?id=<?= $job['id'] ?>" class="text-decoration-none">
+                                    <a href="/job/view?id=<?= $job["id"] ?>" class="text-decoration-none">
                                         <button class="btn btn-success m-1">
                                             <i class="fa-solid fa-eye text-light" title="Visualizar"></i>
                                         </button>
                                     </a>
-                                    <?php if ($data['user'] && $data['user']['id'] == $job['user_id']) { ?>
-                                        <a href="/job/edit?id=<?= $job['id'] ?>" class="text-decoration-none">
+                                    <?php if ($data["user"] && $data["user"]["id"] == $job["user_id"]) { ?>
+                                        <a href="/job/edit?id=<?= $job["id"] ?>" class="text-decoration-none">
                                             <button class="btn btn-primary m-1">
                                                 <i class="fa-solid fa-pen-to-square text-light" title="Editar"></i>
                                             </button>
                                         </a>
                                         <a class="text-decoration-none">
-                                            <button type="button" class="btn btn-danger m-1" data-toggle="modal" data-target="#remove_job_modal" data-id="<?= $job['id'] ?>">
+                                            <button type="button" class="btn btn-danger m-1" data-toggle="modal" data-target="#remove_job_modal" data-id="<?= $job["id"] ?>">
                                                 <i class="fa-solid fa-trash text-light" title="Excluir"></i>
                                             </button>
                                         </a>
@@ -97,7 +97,7 @@
     </section>
     <section>
         <div class="my-3">
-            <?= $data['pagination'] ?>
+            <?= $data["pagination"] ?>
         </div>
     </section>
 </main>

@@ -18,23 +18,23 @@ class Scanner
 
         $dompdf->loadHtml($page);
 
-        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->setPaper("A4", "portrait");
 
         $dompdf->render();
 
-        header('Content-type: application/pdf');
+        header("Content-type: application/pdf");
         // echo $dompdf->output();
-        $dompdf->stream('Vaga - ' . $job['title']);
+        $dompdf->stream("Vaga - " . $job["title"]);
     }
 
     private static function getHtmlPage($job): string
     {
         $status_list = [
-            0 => 'Inativa',
-            1 => 'Ativa'
+            0 => "Inativa",
+            1 => "Ativa"
         ];
 
-        $html = '
+        $html = `
             <!DOCTYPE html>
             <html lang="pt-BR">
 
@@ -57,23 +57,23 @@ class Scanner
                     <div class="mt-5">
                         <div class="form-group">
                             <label for="title" class="font-weight-bold">Título</label>
-                            <input type="text" id="title" name="title" class="form-control" value="' . $job['title'] . '" disabled>
+                            <input type="text" id="title" name="title" class="form-control" value="{$job["title"]}" disabled>
                         </div>
                         <div class="form-group">
                             <label class="font-weight-bold">
                                 Status: 
-                                <span class="badge badge-pill badge-secondary">' . $status_list[$job['status']] . '</span>
+                                <span class="badge badge-pill badge-secondary">{$status_list[$job["status"]]}</span>
                             </label>
                         </div>
                         <div class="form-group">
                             <label for="description" class="font-weight-bold">Descrição</label>
-                            <textarea id="description" name="description" class="form-control" rows="10" disabled>' . $job['description'] . '</textarea>
+                            <textarea id="description" name="description" class="form-control" rows="10" disabled>{$job["description"]}</textarea>
                         </div>
                     </div>
                 </main>
             </body>
             </html>
-        ';
+        `;
 
         return $html;
     }

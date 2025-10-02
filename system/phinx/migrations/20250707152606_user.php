@@ -19,16 +19,16 @@ final class User extends AbstractMigration
      */
     public function change(): void
     {
-        if ($this->hasTable('user')) {
+        if ($this->hasTable("user")) {
             return;
         }
 
-        $this->table('user', ['id' => false, 'primary_key' => 'id'])
-            ->addColumn('id', 'integer', ['identity' => true])
-            ->addColumn('name', 'string', ['limit' => 100])
-            ->addColumn('email', 'string', ['limit' => 100])
-            ->addColumn('password', 'string', ['limit' => 60])
-            ->addColumn('token', 'string', ['limit' => 32, 'null' => true])
+        $this->table("user", ["id" => false, "primary_key" => "id"])
+            ->addColumn("id", "integer", ["identity" => true])
+            ->addColumn("name", "string", ["limit" => 100])
+            ->addColumn("email", "string", ["limit" => 100])
+            ->addColumn("password", "string", ["limit" => 60])
+            ->addColumn("token", "string", ["limit" => 32, "null" => true])
             ->create();
     }
 }

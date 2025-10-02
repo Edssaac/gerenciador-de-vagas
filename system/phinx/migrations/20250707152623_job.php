@@ -19,18 +19,18 @@ final class Job extends AbstractMigration
      */
     public function change(): void
     {
-        if ($this->hasTable('job')) {
+        if ($this->hasTable("job")) {
             return;
         }
 
-        $this->table('job', ['id' => false, 'primary_key' => 'id'])
-            ->addColumn('id', 'integer', ['identity' => true])
-            ->addColumn('user_id', 'integer')
-            ->addColumn('title', 'string', ['limit' => 100])
-            ->addColumn('description', 'string', ['limit' => 1000])
-            ->addColumn('status', 'char', ['limit' => 1, 'default' => '1'])
-            ->addColumn('date', 'datetime')
-            ->addForeignKey('user_id', 'user', 'id', ['delete' => 'CASCADE', 'update' => 'NO_ACTION'])
+        $this->table("job", ["id" => false, "primary_key" => "id"])
+            ->addColumn("id", "integer", ["identity" => true])
+            ->addColumn("user_id", "integer")
+            ->addColumn("title", "string", ["limit" => 100])
+            ->addColumn("description", "string", ["limit" => 1000])
+            ->addColumn("status", "char", ["limit" => 1, "default" => "1"])
+            ->addColumn("date", "datetime")
+            ->addForeignKey("user_id", "user", "id", ["delete" => "CASCADE", "update" => "NO_ACTION"])
             ->create();
     }
 }

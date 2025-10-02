@@ -13,13 +13,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
-    <?php foreach ($data['scripts'] as $script) { ?>
+    <?php foreach ($data["scripts"] as $script) { ?>
         <script src="/public/js/<?= $script ?>.js" defer></script>
     <?php } ?>
 
     <link rel="shortcut icon" href="/public/images/vacancy-manager.png" type="image/png">
 
-    <title><?= $data['title'] ?></title>
+    <title><?= $data["title"] ?></title>
 </head>
 
 <body>
@@ -34,7 +34,7 @@
         <div class="collapse navbar-collapse" id="headerNav">
             <div class="navbar-nav text-right">
                 <a class="nav-link text-dark" href="/">Vagas</a>
-                <?php if ($data['logged']) { ?>
+                <?php if ($data["logged"]) { ?>
                     <a class="nav-link text-dark" href="/job/new">Cadastrar Vaga</a>
                     <a class="nav-link text-dark" href="/user/logout">Sair</a>
                 <?php } else { ?>

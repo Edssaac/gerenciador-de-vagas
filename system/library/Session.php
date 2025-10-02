@@ -15,27 +15,27 @@ class Session
     {
         self::init();
 
-        return isset($_SESSION['user']);
+        return isset($_SESSION["user"]);
     }
 
     public static function getLoggedUser(): array
     {
         self::init();
 
-        return (self::isLogged()) ? $_SESSION['user'] : [];
+        return (self::isLogged()) ? $_SESSION["user"] : [];
     }
 
     public static function login(array $user): void
     {
         self::init();
 
-        $_SESSION['user'] = [
-            'id' => $user['id'],
-            'name' => $user['name'],
-            'email' => $user['email']
+        $_SESSION["user"] = [
+            "id" => $user["id"],
+            "name" => $user["name"],
+            "email" => $user["email"]
         ];
 
-        header('location: /');
+        header("location: /");
         exit;
     }
 
@@ -43,16 +43,16 @@ class Session
     {
         self::init();
 
-        unset($_SESSION['user']);
+        unset($_SESSION["user"]);
 
-        header('location: /user/login');
+        header("location: /user/login");
         exit;
     }
 
     public static function requireLogin(): void
     {
         if (!self::isLogged()) {
-            header('location: /user/login');
+            header("location: /user/login");
             exit;
         }
     }
@@ -60,7 +60,7 @@ class Session
     public static function requireLogout(): void
     {
         if (self::isLogged()) {
-            header('location: /');
+            header("location: /");
             exit;
         }
     }

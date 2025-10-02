@@ -9,7 +9,7 @@ class User extends Model
 {
     public function register(array $data): bool
     {
-        $data['token'] = md5(uniqid());
+        $data["token"] = md5(uniqid());
 
         $result = $this->query(
             "INSERT INTO user (
@@ -18,14 +18,14 @@ class User extends Model
                 :name, :email, :password, :token
             )",
             $this->mapToBind([
-                'name' => $data['name'],
-                'email' => $data['email'],
-                'password' => password_hash($data['password'], PASSWORD_DEFAULT),
-                'token' => $data['token']
+                "name" => $data["name"],
+                "email" => $data["email"],
+                "password" => password_hash($data["password"], PASSWORD_DEFAULT),
+                "token" => $data["token"]
             ])
         );
 
-        return (bool) $result->rowCount();
+        return true;
     }
 
     public function updatePassword(string $email, string $password): bool
@@ -37,13 +37,13 @@ class User extends Model
                 WHERE email = ':email'
             ",
             $this->mapToBind([
-                'email' => $email,
-                'password' => password_hash($password, PASSWORD_DEFAULT),
-                'token' => md5(uniqid())
+                "email" => $email,
+                "password" => password_hash($password, PASSWORD_DEFAULT),
+                "token" => md5(uniqid())
             ])
         );
 
-        return (bool) $result->rowCount();
+        return true;
     }
 
     public function getUserByEmail(string $email): array
@@ -52,7 +52,7 @@ class User extends Model
             "SELECT id, name, email, password, token FROM user
 				WHERE email = :email
 			",
-            $this->mapToBind(['email' => $email])
+            $this->mapToBind(["email" => $email])
         );
 
         $user = $result->fetch(PDO::FETCH_ASSOC);
@@ -66,7 +66,7 @@ class User extends Model
             "SELECT id, name, email, password, token FROM user
 				WHERE token = :token
 			",
-            $this->mapToBind(['token' => $token])
+            $this->mapToBind(["token" => $token])
         );
 
         $user = $result->fetch(PDO::FETCH_ASSOC);

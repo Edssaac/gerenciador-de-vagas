@@ -9,7 +9,7 @@ class Job extends Model
 {
     public function register(array $data): bool
     {
-        $data['date'] = date("Y-m-d H:i:s");
+        $data["date"] = date("Y-m-d H:i:s");
 
         $result = $this->query(
             "INSERT INTO job (
@@ -18,20 +18,20 @@ class Job extends Model
                 :user_id, :title, :description, :status, :date
             )",
             $this->mapToBind([
-                'user_id' => $data['user_id'],
-                'title' => $data['title'],
-                'description' => $data['description'],
-                'status' => $data['status'],
-                'date' => $data['date']
+                "user_id" => $data["user_id"],
+                "title" => $data["title"],
+                "description" => $data["description"],
+                "status" => $data["status"],
+                "date" => $data["date"]
             ])
         );
 
-        return (bool) $result->rowCount();
+        return true;
     }
 
     public function update(array $data): bool
     {
-        $data['date'] = date("Y-m-d H:i:s");
+        $data["date"] = date("Y-m-d H:i:s");
 
         $result = $this->query(
             "UPDATE job SET
@@ -44,7 +44,7 @@ class Job extends Model
             $this->mapToBind($data)
         );
 
-        return (bool) $result->rowCount();
+        return true;
     }
 
     public function remove(int $id): bool
@@ -53,10 +53,10 @@ class Job extends Model
             "DELETE FROM job 
                 WHERE id = :id
             ",
-            $this->mapToBind(['id' => $id])
+            $this->mapToBind(["id" => $id])
         );
 
-        return (bool) $result->rowCount();
+        return true;
     }
 
     public function getJob(int $id): array
@@ -65,7 +65,7 @@ class Job extends Model
             "SELECT id, user_id, title, description, status, date FROM job
                 WHERE id = :id
             ",
-            $this->mapToBind(['id' => $id])
+            $this->mapToBind(["id" => $id])
         );
 
         $job = $result->fetch(PDO::FETCH_ASSOC);
@@ -75,28 +75,28 @@ class Job extends Model
 
     public function getJobs(array $filters): array
     {
-        $where = 'WHERE id IS NOT NULL';
+        $where = "WHERE id IS NOT NULL";
 
-        if (isset($filters['title'])) {
-            $where .= ' AND title LIKE CONCAT("%", :title, "%")';
+        if (isset($filters["title"])) {
+            $where .= " AND title LIKE CONCAT("%", :title, "%")";
         }
 
-        if (isset($filters['status'])) {
-            $where .= ' AND status = :status';
+        if (isset($filters["status"])) {
+            $where .= " AND status = :status";
         }
 
-        if (isset($filters['offset'])) {
-            $offset = $filters['offset'];
-            unset($filters['offset']);
+        if (isset($filters["offset"])) {
+            $offset = $filters["offset"];
+            unset($filters["offset"]);
         } else {
             $offset = 0;
         }
 
-        if (isset($filters['limit'])) {
-            $limit = $filters['limit'];
-            unset($filters['limit']);
+        if (isset($filters["limit"])) {
+            $limit = $filters["limit"];
+            unset($filters["limit"]);
         } else {
-            $limit = $_ENV['PAGINATION_LIMIT'];
+            $limit = $_ENV["PAGINATION_LIMIT"];
         }
 
         $result = $this->query(
@@ -121,8 +121,8 @@ class Job extends Model
 
         $job = $result->fetch(PDO::FETCH_ASSOC);
 
-        if (isset($job['total'])) {
-            return (int) $job['total'];
+        if (isset($job["total"])) {
+            return (int) $job["total"];
         }
 
         return 0;
